@@ -5,9 +5,10 @@ This repository houses supplementary code and Jupyter notebooks that accompany t
 
 ## Repository Structure
 
-The repository is organized by main AI domains to align with the AI Pocket Reference project:
+The repository is organized by main AI domains to align with the AI Pocket Reference
+project:
 
-```
+```bash
 notebooks/
 ├── fundamentals/
 ├── nlp/
@@ -17,25 +18,31 @@ notebooks/
 └── responsible_ai/
 ```
 
-Each directory contains supplementary Jupyter notebooks for their corresponding pocket references. The notebooks follow the same naming convention as their pocket reference counterparts (without the .md extension). For example:
+Each directory contains supplementary Jupyter notebooks for their corresponding
+pocket references. The notebooks follow the same naming convention as their pocket
+reference counterparts (without the .md extension). For example:
 
 - `notebooks/nlp/lora.ipynb` corresponds to the LoRA pocket reference
-- `notebooks/cv/resnet.ipynb` corresponds to the ResNet pocket reference
 
-This naming convention makes it easy to find the associated code examples and implementations for any given pocket reference.
+This naming convention makes it easy to find the associated code examples and
+implementations for any given pocket reference.
 
 ## Using the Notebooks
 
 1. **Finding Relevant Content**
+
    - Browse the domain-specific directories
    - Check the notebook descriptions for topics covered
    - Follow links from pocket references when available
 
 2. **Running the Notebooks**
-   
+
    You can run these notebooks in two ways:
-   - Through Google Colab: Follow the Colab links provided in the pocket references
+
+   - Through Google Colab: Follow the Colab links provided directly in the pocket
+     reference
    - Locally:
+
      ```bash
      # Clone the repository
      git clone https://github.com/VectorInstitute/ai-pocket-reference-code.git
@@ -43,18 +50,20 @@ This naming convention makes it easy to find the associated code examples and im
 
      # Set up your environment
      pip install -r requirements.txt
-     
+
      # Launch Jupyter
      jupyter lab
      ```
 
 ## Contributing
 
-We welcome contributions of new notebooks and improvements to existing ones! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) guide for details.
+We welcome contributions of new notebooks and improvements to existing ones!
+Please see our [CONTRIBUTING.md](CONTRIBUTING.md) guide for details.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
 
 ---
 
