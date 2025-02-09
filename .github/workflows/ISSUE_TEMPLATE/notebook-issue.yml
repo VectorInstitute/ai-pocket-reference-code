@@ -1,0 +1,54 @@
+name: 📓 Notebook Issue
+description: Report an issue with a supplementary notebook
+title: "`<insert-notebook-name>`"
+labels:
+  - notebook-issue
+body:
+  - type: dropdown
+    id: book
+    attributes:
+      label: Book
+      description: Which domain does this notebook belong to?
+      options:
+        - fundamentals
+        - nlp
+        - cv
+        - rl
+        - fl
+        - responsible_ai
+    validations:
+      required: true
+
+  - type: input
+    id: notebook-name
+    attributes:
+      label: Notebook Name
+      description: Name of the notebook (with .ipynb extension)
+      placeholder: e.g., lora.ipynb, resnet.ipynb
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: issue-type
+    attributes:
+      label: Issue Type
+      description: What type of issue are you experiencing?
+      options:
+        - label: Code doesn't run
+        - label: Missing dependencies
+        - label: Outdated code/APIs
+        - label: Incorrect implementation
+        - label: Unclear explanations
+        - label: Missing content
+        - label: Other (please describe below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Please provide more details about the issue
+      placeholder: Include error messages, expected behavior, or suggested improvements
+    validations:
+      required: true
