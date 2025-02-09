@@ -43,9 +43,9 @@ This guide explains how to contribute supplementary notebooks to the
    pre-commit install
    ```
 
-   The pre-commit hooks help maintain consistent code quality across contributions.
-   These checks run automatically before each commit. Alternatively, run `make lint`
-   and ensure all checks pass prior to submitting a Pull Request.
+   The pre-commit hooks help maintain consistent code quality across the contributed
+   notebooks. These checks run automatically before each commit. Alternatively,
+   run `make lint` and ensure all checks pass prior to submitting a Pull Request.
 
 3. **Create a Pull Request**
    - Create a new branch for your notebook
