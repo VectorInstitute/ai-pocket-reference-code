@@ -27,33 +27,25 @@ reference counterparts (without the .md extension). For example:
 This naming convention makes it easy to find the associated code examples and
 implementations for any given pocket reference.
 
-## Using the Notebooks
+## Running the Notebooks
 
-1. **Finding Relevant Content**
+You can run these notebooks in two ways:
 
-   - Browse the domain-specific directories
-   - Check the notebook descriptions for topics covered
-   - Follow links from pocket references when available
+- Through Google Colab: Follow the Colab links provided directly in the pocket
+  reference
+- Locally:
 
-2. **Running the Notebooks**
+  ```bash
+  # Clone the repository
+  git clone https://github.com/VectorInstitute/ai-pocket-reference-code.git
+  cd ai-pocket-reference-code
 
-   You can run these notebooks in two ways:
+  # Set up your environment
+  pip install -r requirements.txt
 
-   - Through Google Colab: Follow the Colab links provided directly in the pocket
-     reference
-   - Locally:
-
-     ```bash
-     # Clone the repository
-     git clone https://github.com/VectorInstitute/ai-pocket-reference-code.git
-     cd ai-pocket-reference-code
-
-     # Set up your environment
-     pip install -r requirements.txt
-
-     # Launch Jupyter
-     jupyter lab
-     ```
+  # Launch Jupyter
+  jupyter lab
+  ```
 
 ## Contributing
 
