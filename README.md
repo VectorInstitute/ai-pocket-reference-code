@@ -19,7 +19,7 @@ notebooks/
 ```
 
 Each directory contains supplementary Jupyter notebooks for their corresponding
-pocket references. The notebooks follow the same naming convention as their pocket
+Pocket References The notebooks follow the same naming convention as their pocket
 reference counterparts (without the .md extension). For example:
 
 - `notebooks/nlp/lora.ipynb` corresponds to the LoRA pocket reference
