@@ -53,3 +53,18 @@ repos:
           "--ignore-words-list",
           "rouge",
         ]
+
+  - repo: https://github.com/srstevenson/nb-clean
+    rev: 4.0.1
+    hooks:
+      - id: nb-clean
+        args: [--preserve-cell-outputs, --remove-empty-cells]
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: 'v0.9.6'
+    hooks:
+    - id: ruff
+      args: [--fix, --exit-non-zero-on-fix]
+      types_or: [python, jupyter]
+    - id: ruff-format
+      types_or: [python, jupyter]
