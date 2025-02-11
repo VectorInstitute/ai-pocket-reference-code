@@ -1,0 +1,2 @@
+[lint.isort]
+lines-after-imports = -1
