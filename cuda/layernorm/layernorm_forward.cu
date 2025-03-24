@@ -238,7 +238,8 @@ void layernorm_forward2(
 // Uses Cache Operators, .cs to limit cache pollution. See more: https://docs.nvidia.com/cuda/parallel-thread-execution/index.html#cache-operators
 __global__ void layernorm_forward_kernel3(
     float* __restrict__ out, float* __restrict__ mean, float* __restrict__ rstd,
-    const float*  __restrict__ inp, const float*  __restrict__ weight, const float* __restrict__ bias,
+    const float*  __restrict__ inp,
+    const float*  __restrict__ weight, const float* __restrict__ bias,
     int N, int C
 ) {
     namespace cg = cooperative_groups;
@@ -307,7 +308,8 @@ void layernorm_forward3(
 // Same as Kernel 3 but uses var(x) == mean(x**2) - mean(x)**2
 __global__ void layernorm_forward_kernel4(
     float* __restrict__ out, float* __restrict__ mean, float* __restrict__ rstd,
-    const float*  __restrict__ inp, const float*  __restrict__ weight, const float* __restrict__ bias,
+    const float*  __restrict__ inp,
+    const float*  __restrict__ weight, const float* __restrict__ bias,
     int N, int C
 ) {
     namespace cg = cooperative_groups;
@@ -378,7 +380,8 @@ void layernorm_forward4(
 // 2. And then at the block level
 __global__ void layernorm_forward_kernel5(
     float* __restrict__ out, float* __restrict__ mean, float* __restrict__ rstd,
-    const float*  __restrict__ inp, const float*  __restrict__ weight, const float* __restrict__ bias,
+    const float*  __restrict__ inp,
+    const float*  __restrict__ weight, const float* __restrict__ bias,
     int N, int C
 ) {
     namespace cg = cooperative_groups;
@@ -409,7 +412,8 @@ __global__ void layernorm_forward_kernel5(
     // warp-level reduction
     float warp_sum = cg::reduce(warp, thread_sum, cg::plus<float>{}); // sum(x)
     float warp_sum2 = cg::reduce(warp, thread_sum2, cg::plus<float>{}); // sum(x**2)
-    // store the warp-level reduction in shared memory (we could have lane_id == 0 guard but not needed)
+    // store the warp-level reduction in shared memory
+    // (we could have lane_id == 0 guard but not needed)
     shared_sum[warp_id] = warp_sum;
     shared_sum2[warp_id] = warp_sum2;
     __syncthreads();
