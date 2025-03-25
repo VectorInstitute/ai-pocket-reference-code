@@ -19,7 +19,7 @@ void layernorm_forward_cpu(
         for (int t = 0; t < T; t++) {
             // seek to the input position inp[b,t,:]
             const float* x = inp + b * T * C + t * C;
-            
+
             // calculate the mean
             float m = 0.0f;
             for (int i = 0; i < C; i++) {
@@ -72,7 +72,7 @@ __global__ void layernorm_forward_kernel1(
     if (idx < N) {
         // Go to the start index of the input segment for this thread, inp[idx, :]
         const float* x = inp + idx * C;
-        
+
         // Compute mean
         float m = 0.0f;
         for (int i = 0; i < C; i++) {
@@ -125,7 +125,7 @@ void layernorm_forward1(
 // mean and rstd kernels use the concept from "Puzzle 13 - Axis Sum"
 // - each block is responsible for one segment of size C instead of each thread
 // - use shared memory of size block_size to store the partial sums
-// For the normalization kernel, each thread correspomds to one output element
+// For the normalization kernel, each thread corresponds to one output element
 __global__ void mean_kernel(
     float* mean,
     const float* inp,
@@ -215,15 +215,15 @@ void layernorm_forward2(
     const int block_size
 ) {
     int N = B * T;
-    
+
     // in mean and rstd, threads cooperate within blocks via reductions
     mean_kernel<<<N, block_size, block_size * sizeof(float)>>>(mean, inp, N, C, block_size);
     cudaCheck(cudaGetLastError());
     rstd_kernel<<<N, block_size, block_size * sizeof(float)>>>(rstd, inp, mean, N, C, block_size);
     cudaCheck(cudaGetLastError());
-    
+
     // in the normalization, everything just gets flattened out
-    const int block_size2 = 256;  
+    const int block_size2 = 256;
     const int grid_size = ceil_div(B * T * C, block_size2);
     normalization_kernel<<<grid_size, block_size2>>>(out, inp, mean, rstd, weight, bias, B, T, C);
     cudaCheck(cudaGetLastError());
@@ -245,7 +245,7 @@ __global__ void layernorm_forward_kernel3(
     namespace cg = cooperative_groups;
     cg::thread_block block = cg::this_thread_block();
     cg::thread_block_tile<32> warp = cg::tiled_partition<32>(block);
-    
+
     // meta_group_size is the number of warps in a block, and meta_group_rank is the warp index
     int idx = blockIdx.x * warp.meta_group_size() + warp.meta_group_rank();
     if(idx >= N) {
@@ -389,7 +389,7 @@ __global__ void layernorm_forward_kernel5(
     cg::thread_block_tile<32> warp = cg::tiled_partition<32>(block);
 
     __shared__ float shared_sum[32]; // block_size max is 1024 = 32 * 32 warps
-    __shared__ float shared_sum2[32]; // warps will be writing into shared memeory after warp-reduce
+    __shared__ float shared_sum2[32]; // warps will be writing into shared memory after warp-reduce
 
     int num_warps = blockDim.x / 32;
     int warp_id = threadIdx.x / 32;
