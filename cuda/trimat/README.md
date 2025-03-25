@@ -1,1 +1,0 @@
-# Triangular matmul CUDA Kernels
