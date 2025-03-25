@@ -2,7 +2,7 @@
 
 This directory contains the CUDA code for the kernels
 described in the
-[LayerNorm Kernel](https://github.com/VectorInstitute/ai-pocket-reference/blob/90-new-request-layernorm-cuda-kernel/books/compute/src/cuda/kernels/layernorm_forward.md)
+[LayerNorm Kernel](https://github.com/VectorInstitute/ai-pocket-reference/blob/main/books/compute/src/cuda/kernels/layernorm_forward.md)
 pocket reference.
 
 These kernels are borrowed from the
