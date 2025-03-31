@@ -27,6 +27,7 @@ Fixes #
 - [ ] rl
 - [ ] fl
 - [ ] responsible_ai
+- [ ] compute
 
 ## Description
 
